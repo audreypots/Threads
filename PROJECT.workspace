@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CodeLite_Workspace Name="PROJECT" Database="" Version="10.0.0">
   <Project Name="Threads" Path="Threads/Threads.project" Active="Yes"/>
-  <Project Name="ThreadTests" Path="ThreadTests/ThreadTests.project"/>
+  <Project Name="ThreadsTests" Path="ThreadsTests/ThreadsTests.project"/>
   <BuildMatrix>
     <WorkspaceConfiguration Name="Debug" Selected="yes">
       <Environment/>
       <Project Name="Threads" ConfigName="Debug"/>
       <Project Name="ThreadTests" ConfigName="Debug"/>
+      <Project Name="ThreadsTests" ConfigName="Debug"/>
     </WorkspaceConfiguration>
     <WorkspaceConfiguration Name="Release" Selected="yes">
       <Environment/>
       <Project Name="Threads" ConfigName="Release"/>
       <Project Name="ThreadTests" ConfigName="Release"/>
+      <Project Name="ThreadsTests" ConfigName="Debug"/>
     </WorkspaceConfiguration>
   </BuildMatrix>
 </CodeLite_Workspace>

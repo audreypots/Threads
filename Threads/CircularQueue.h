@@ -4,9 +4,10 @@
 using namespace std;
 
 class CircularQueue {
+    
 private:
     int front, back;
-    string commands[SIZE];
+    string items[SIZE];
     
     void resetCircularQueue()
     {
@@ -37,61 +38,44 @@ public:
         return false;
     }
     
-    void enQueue(string command){
+    void add(string item){
         if(isFull())
         {
-            cout << "Queue is full";
+            front = (front + 1) % SIZE;
         } 
         else 
         {
             if(front == -1) 
                 front = 0;
-            back = (back + 1) % SIZE;
-            commands[back] = command;
-            cout << endl << "inserted the command" << command << endl;
         }
+        back = (back + 1) % SIZE;
+        items[back] = item;
     }
     
-    string deQueue()
+    string remove()
     {
-        string command;
-        if(isEmpty())
+        string item = "";
+        if(!isEmpty())
         {
-            cout << "Queue is empty" << endl;
-            return "";
-        } 
-        else 
-        {
-            command = commands[front];
+            item = items[front];
             if(front == back)
-            {
-                front = -1;
-                back = -1;
-            } 
+                resetCircularQueue();
             else 
-            {
                 front=(front+1) % SIZE;
-            }
-            return(command);
         }
+        return item;
     }
-    
-    void display()
+
+    string getRawQueue()
     {
-        /* Function to display status of Circular Queue */
         int i;
-        if(isEmpty()) {
-            cout << endl << "Empty Queue" << endl;
-        }
-        else
+        string rawQueue = "";
+        cout << "is Empty: " << isEmpty();
+        if(!isEmpty()) 
         {
-            cout << "Front -> " << front;
-            cout << endl << "Items -> ";
-            for(i=front; i!=back;i=(i+1)%SIZE)
-                cout << commands[i];
-            cout << commands[i];
-            cout << endl << "Rear -> " << back;
+            for(i = 0; i < SIZE; i++)
+                rawQueue += items[i];
         }
+        return rawQueue;
     }
-    
 };

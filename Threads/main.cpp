@@ -8,33 +8,30 @@ int main(int argc, char **argv)
     CircularQueue q;
     
     // Fails because front = -1
-    q.deQueue();
+    q.remove();
     
-    q.enQueue("banana");
-    q.enQueue("banana");
-    q.enQueue("banana");
-    q.enQueue("banana");
-    q.enQueue("banana");
+    q.add("banana");
+    q.add("banana");
+    q.add("banana");
+    q.add("banana");
+    q.add("banana");
     
     // Fails to enqueue because front == 0 && rear == SIZE - 1
-    q.enQueue("banana");
+    q.add("banana");
     
     
-    q.display();
+    //string command = q.remove();
     
-    string command = q.deQueue();
+    //if( command != "")
+    //   cout << endl << "deleted command is " << command;
     
-    if( command != "")
-       cout << endl << "deleted command is " << command;
+    //q.displayQueue();
+    q.add("apple");
     
-    q.display();
-    
-    q.enQueue("apple");
-    
-    q.display();
     
     // Fails to enqueue because front == rear + 1
-    q.enQueue("banana");
+    q.add("banana");
     
+    //q.displayQueue();
 	return 0;
 }
