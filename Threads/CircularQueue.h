@@ -10,7 +10,7 @@ class CircularQueue
 private:
     int front, back;
     string items[SIZE];
-    std::mutex items_mutex;
+    mutex items_mutex;
     
     void resetCircularQueue()
     {

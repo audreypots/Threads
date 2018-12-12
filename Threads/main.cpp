@@ -3,6 +3,7 @@
 #include <thread>
 #include "CircularQueue.h"
 #include "FruitCommands.h"
+#include "FruitCommandFactory.h"
 
 void commandInputThread(CircularQueue * cq) 
 {
@@ -27,14 +28,16 @@ void displayThread(CircularQueue *cq)
 
         string command;
         FruitCommands *fCommand = NULL;
+        FruitCommandFactory fcFactory;
 
         command = cq->remove();
 
-        fCommand = FruitCommands::createCommand(command);
-     
-        fCommand->display();
-
-        delete fCommand;
+        fCommand = fcFactory.createFruitCommand(command);
+        if (fCommand != NULL)
+        {     
+            fCommand->display();
+            delete fCommand;
+        }
         
         if(command == "exit")
             break;

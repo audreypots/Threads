@@ -15,8 +15,6 @@ public:
     { 
         cout << "some fruit command" << endl; 
     }
-    
-    static FruitCommands* createCommand(string command);
 };
 
 class Banana: public FruitCommands 
@@ -103,17 +101,3 @@ public:
         cout << "Unknown command" << endl; 
     }
 };
-
-FruitCommands* FruitCommands::createCommand(string command)
-{
-    if(command == "apple")
-        return new Apple();
-    if(command == "banana")
-        return new Banana();
-    if(command == "orange")
-        return new Orange();
-    if(command == "exit")
-        return new Exit();
-
-    return new Unknown();
-}
