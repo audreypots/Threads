@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CodeLite_Project Name="ThreadsTests" Version="10.0.0" InternalType="">
   <VirtualDirectory Name="ThreadsTests">
+    <File Name="ThreadsUnitTest.cpp"/>
     <File Name="runtest.bat"/>
     <File Name="buildtest.bat"/>
-    <File Name="CircularQueueTest.cpp"/>
     <File Name="catch.hpp"/>
   </VirtualDirectory>
   <Description/>

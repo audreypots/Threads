@@ -1,4 +1,5 @@
 #include <iostream>
+#include <mutex>
 #define SIZE 5
 
 using namespace std;
@@ -8,6 +9,7 @@ class CircularQueue {
 private:
     int front, back;
     string items[SIZE];
+    std::mutex items_mutex;
     
     void resetCircularQueue()
     {
@@ -39,6 +41,7 @@ public:
     }
     
     void add(string item){
+        lock_guard<mutex> lock(items_mutex);
         if(isFull())
         {
             front = (front + 1) % SIZE;
@@ -54,6 +57,7 @@ public:
     
     string remove()
     {
+        lock_guard<mutex> lock(items_mutex);
         string item = "";
         if(!isEmpty())
         {

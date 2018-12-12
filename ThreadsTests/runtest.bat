@@ -1,3 +1,3 @@
-CircularQueueTest.exe
+ThreadsUnitTest.exe
 
 pause
