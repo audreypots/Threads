@@ -1,10 +1,12 @@
 #include <iostream>
 #include <mutex>
+
 #define SIZE 5
+
 using namespace std;
 
-class CircularQueue {
-
+class CircularQueue
+{
 private:
     int front, back;
     string items[SIZE];
@@ -34,13 +36,17 @@ public:
     {
         if(front == 0 && back == SIZE - 1)
             return true;
+
         if(front == back + 1) 
             return true;
+
         return false;
     }
     
-    void add(string item){
+    void add(string item)
+    {
         lock_guard<mutex> lock(items_mutex);
+        
         if(isFull())
         {
             front = (front + 1) % SIZE;
@@ -51,13 +57,16 @@ public:
                 front = 0;
         }
         back = (back + 1) % SIZE;
+
         items[back] = item;
     }
     
     string remove()
     {
         lock_guard<mutex> lock(items_mutex);
+
         string item = "";
+
         if(!isEmpty())
         {
             item = items[front];
@@ -66,6 +75,7 @@ public:
             else 
                 front=(front+1) % SIZE;
         }
+
         return item;
     }
 
@@ -73,6 +83,7 @@ public:
     {
         int i;
         string rawQueue = "";
+
         if(!isEmpty()) 
         {
             for(i = 0; i < SIZE; i++)

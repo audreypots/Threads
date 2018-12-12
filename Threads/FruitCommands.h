@@ -1,38 +1,119 @@
 #include <iostream>
+
 class FruitCommands
 {
 public:
-    FruitCommands()
-    {
-    }
-    ~FruitCommands()
+    FruitCommands() 
     {
     }
     
-    virtual void display() { cout << "some fruit command" << endl; };
-
+    virtual ~FruitCommands() 
+    {
+    }
+    
+    virtual void display() 
+    { 
+        cout << "some fruit command" << endl; 
+    }
+    
+    static FruitCommands* createCommand(string command);
 };
 
 class Banana: public FruitCommands 
 {
 public:
-    void display () { cout << "Banana" << endl; };
+    Banana() 
+    {
+    }
+    
+    ~Banana() 
+    {
+    }
+    
+    void display() 
+    { 
+        cout << "Banana" << endl; 
+    }
 };
 
 class Apple: public FruitCommands
 {
 public:
-    void display () { cout << "Apple" << endl; };
+    Apple()
+    {
+    }
+    
+    ~Apple()
+    {
+    }
+    
+    void display()
+    { 
+        cout << "Apple" << endl; 
+    }
 };
 
 class Orange: public FruitCommands
 {
 public:
-    void display () { cout << "Orange" << endl; };
+    Orange()
+    {
+    }
+    
+    ~Orange()
+    {
+    }
+    
+    void display() 
+    { 
+        cout << "Orange" << endl; 
+    }
+};
+
+class Exit: public FruitCommands
+{
+public:
+    Exit() 
+    {
+    }
+    
+    ~Exit() 
+    {
+    }
+    
+    void display() 
+    {
+        cout << "Exit" << endl;
+    }
 };
 
 class Unknown: public FruitCommands
 {
 public:
-    void display () { cout << "Unknown command" << endl; };
+    Unknown() 
+    {
+    }
+    
+    ~Unknown() 
+    {
+    }
+    
+    void display() 
+    { 
+        cout << "Unknown command" << endl; 
+    }
 };
+
+FruitCommands* FruitCommands::createCommand(string command)
+{
+    if(command == "apple")
+        return new Apple();
+    if(command == "banana")
+        return new Banana();
+    if(command == "orange")
+        return new Orange();
+    if(command == "exit")
+        return new Exit();
+
+    return new Unknown();
+}
