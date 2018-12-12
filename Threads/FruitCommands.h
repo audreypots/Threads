@@ -83,7 +83,7 @@ public:
     
     void display() 
     {
-        cout << "Exit" << endl;
+        cout << "terminating..." << endl;
     }
 };
 
