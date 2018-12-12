@@ -1,11 +1,10 @@
 #include <iostream>
 #include <mutex>
 #define SIZE 5
-
 using namespace std;
 
 class CircularQueue {
-    
+
 private:
     int front, back;
     string items[SIZE];
@@ -74,7 +73,6 @@ public:
     {
         int i;
         string rawQueue = "";
-        cout << "is Empty: " << isEmpty();
         if(!isEmpty()) 
         {
             for(i = 0; i < SIZE; i++)

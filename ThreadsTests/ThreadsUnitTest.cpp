@@ -5,6 +5,7 @@
 
 #include "catch.hpp"
 #include "..\Threads\CircularQueue.h"
+#include "..\Threads\FruitCommands.h"
 
 TEST_CASE( "Test Add", "[Circular Queue]" ) 
 {

@@ -10,9 +10,9 @@ void commandInputThread(CircularQueue * cq)
     {
         string command;
         cin >> command;
+        cq->add(command);
         if(command == "exit")
             break;
-        cq->add(command);
     }
 }
 
@@ -20,6 +20,8 @@ void displayThread(CircularQueue *cq)
 {
     while(true)
     {
+        if(cq->isEmpty())
+            continue;
         string command;
         FruitCommands *fCommand;
         command = cq->remove();
@@ -29,8 +31,8 @@ void displayThread(CircularQueue *cq)
             fCommand = new Banana();
         else if (command == "orange")
             fCommand = new Orange();
-        else if (command == "")
-            continue;
+        else if (command == "exit")
+            break;
         else
             fCommand = new FruitCommands();
         fCommand->display();
@@ -41,12 +43,12 @@ int main(int argc, char **argv)
 {
     CircularQueue qc;
     
-    cout << "spawning the threads...\n";
+    cout << "create the threads..." << endl;
     thread t1 (commandInputThread, &qc);
     thread t2 (displayThread, &qc);
     t1.join();
     t2.join();
-    cout << "all threads are joined!" << endl;    
+    cout << "exit!" << endl;    
 
 	return 0;
 }
